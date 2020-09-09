@@ -30,7 +30,7 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::apiResource("rolusers","RolusersController");
     Route::apiResource("users","UsersController");
     Route::apiResource("tasks","TaskController");
-    Route::apiResource("topics","TopicsController");
+    Route::apiResource("topics","TopicController");
     Route::apiResource("courses","CourseController");
     Route::get('download', 'TaskController@downloadFile');
 });

@@ -9,6 +9,6 @@ class Task extends Model
     protected $primaryKey = 'id_tasks';
 
     protected $fillable = [
-      'id_users','id_courses','name','description','file'
+      'id_users','id_courses','name','description','file','img'
     ];
 }

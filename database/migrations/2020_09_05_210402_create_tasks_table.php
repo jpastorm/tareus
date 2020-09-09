@@ -19,6 +19,7 @@ class CreateTasksTable extends Migration
             $table->unsignedBigInteger('id_courses')->index();
             $table->string('name');
             $table->text('description');
+            $table->text('img')->nullable();
             $table->text('file');
             $table->timestamps();
 

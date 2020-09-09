@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTasksRequest;
 use App\Task;
 
 use http\Exception;
@@ -17,7 +18,6 @@ class TaskController extends Controller
             $file=$request->get('file');
             return response()->download(storage_path("app/{$file}"));
         }
-
     }
     public function index(Request $request)
     {
@@ -55,7 +55,7 @@ class TaskController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(CreateTasksRequest $request)
     {
 
         if ($request->has('file')) {
@@ -63,13 +63,22 @@ class TaskController extends Controller
             $username = $request->get('id_users');
 
             if ($request->hasFile('file')) {
+
                 $file = $request->file('file')->store('public/'.$username);
+
+                if($request->hasFile('img')){
+                    $img = $request->file('img')->store('public/'.$username.'/task');
+                }else{
+                    $img="";
+                }
+
                 $task = Task::create([
                     'id_users'=>$request->get('id_users'),
                     'id_courses' => $request->get('id_courses'),
                     'name' => $request->get('name'),
                     'description' => $request->get('description'),
                     'file' => $file,
+                    'img'=>$img,
                 ]);
             }
 
@@ -81,7 +90,8 @@ class TaskController extends Controller
         }
         return response()->json([
             'status'=>201,
-            'message'=>$task,
+            'message'=> 'success',
+            'data'=>$task,
         ],201);
     }
 
