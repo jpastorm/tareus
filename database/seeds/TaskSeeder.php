@@ -18,8 +18,8 @@ class TaskSeeder extends Seeder
                 'name' => 'Tarea importante',
                 'description'=> 'Descripcion de la tarea importante aea',
                 'file'=>'file.txt',
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s'),
+           //     'created_at' => date('Y-m-d H:m:s'),
+             //   'updated_at' => date('Y-m-d H:m:s'),
             ],
             [
                 'id_users' => 2,
@@ -27,8 +27,8 @@ class TaskSeeder extends Seeder
                 'name' => 'Tarea importante dos',
                 'description'=> 'Descripcion de la tarea importante dos aea',
                 'file'=>'file.txt',
-                'created_at' => date('Y-m-d H:m:s'),
-                'updated_at' => date('Y-m-d H:m:s'),
+               // 'created_at' => date('Y-m-d H:m:s'),
+                //'updated_at' => date('Y-m-d H:m:s'),
             ],
         ]);
     }

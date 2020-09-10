@@ -63,7 +63,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::withoutTrashed()->get();
         return $user;
     }
 

@@ -1,6 +1,7 @@
 <?php
 namespace App;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -19,6 +20,7 @@ class User extends Authenticatable implements JWTSubject
         'password','created_at','updated_at','state'
     ];
 
+    use SoftDeletes;
     //JWT
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

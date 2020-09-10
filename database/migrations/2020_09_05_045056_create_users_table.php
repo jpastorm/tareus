@@ -22,7 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->boolean('state')->default(true);
             $table->boolean('email_verified')->default(false);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->softDeletes();
 
             //foreign key
             $table->foreign('id_rolusers')

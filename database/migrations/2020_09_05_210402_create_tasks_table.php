@@ -21,7 +21,9 @@ class CreateTasksTable extends Migration
             $table->text('description');
             $table->text('img')->nullable();
             $table->text('file');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
+            $table->softDeletes();
 
             //foreign key users
             $table->foreign('id_users')
