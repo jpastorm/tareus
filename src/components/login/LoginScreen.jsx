@@ -3,6 +3,7 @@ import { AuthContext } from '../../auth/authContext'
 import { useForm } from '../../hooks/useForm'
 import { types } from '../../types/types'
 import { auth } from '../../utils/auth/auth'
+import swal from 'sweetalert';
 
 export const LoginScreen = ({history}) => {
 
@@ -28,15 +29,21 @@ export const LoginScreen = ({history}) => {
         }
     
             const res = auth(payload)
-            res.then((jwt)=>{
-                console.log(jwt)
-                dispatch({
-                    type:types.login,
-                    payload:jwt
-                })
+            res.then((result)=>{
+                console.log(result)
+                if(result){
+                    dispatch({
+                        type:types.login,
+                        payload:result
+                    })
+                    history.replace(lastPath);
+                }else{
+                    swal("Error", "Invalid credentials", "error");
+                }
+                
             })
 
-            history.replace(lastPath);
+            
             
         }      
     
